@@ -51,5 +51,6 @@ class HeartDiseasePrediction(models.Model):
     ca = models.IntegerField()
     thal = models.IntegerField(choices=THALIUM_STRESS_CHOICES)
 
-
+    def __str__(self):
+        return f"User {self.id}"
     
