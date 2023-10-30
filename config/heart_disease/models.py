@@ -50,6 +50,7 @@ class HeartDiseasePrediction(models.Model):
     slope = models.IntegerField(choices=SLOPE_CHOICES)
     ca = models.IntegerField()
     thal = models.IntegerField(choices=THALIUM_STRESS_CHOICES)
+    prediction_results = models.IntegerField()
 
     def __str__(self):
         return f"User {self.id}"
