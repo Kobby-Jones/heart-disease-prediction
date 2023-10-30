@@ -4,6 +4,9 @@ from .forms import HeartDiseasePredictionForm
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'heart_disease/index.html')
+
 def user_inputs(request):
     if request.method == 'POST':
         form = HeartDiseasePredictionForm(request.POST)
@@ -14,4 +17,4 @@ def user_inputs(request):
         
     else:
         form = HeartDiseasePredictionForm()
-    return render(request, 'input_data.html', {'form': form})
+    return render(request, 'heart_disease/input_data.html', {'form': form})

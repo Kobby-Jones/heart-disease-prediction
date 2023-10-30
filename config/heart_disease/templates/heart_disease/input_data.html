@@ -1,0 +1,15 @@
+{% extends "heart_disease/_base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+
+   {% block content %}
+     <h1 class='text-center'>Input The Data for Heart Disease Prediction</h1>
+    <div class="container">
+        <form action="" method="post" class = "card p-3 space-between">
+         {% csrf_token %} 
+         {{ form|crispy }}
+         <button type ='submit' class='btn btn-primary'>Predict</button>
+    </form>
+    </div>
+  {% endblock content %}
