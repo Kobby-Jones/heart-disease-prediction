@@ -4,17 +4,19 @@
     <div class="container mt-5 text-center">
         <div class="row ">
             <div class="col-lg-6 ms-auto me-auto ">
-                <div class="card"> 
+                <div class="card pb-2" style="background: #f46b45;
+background: -webkit-linear-gradient(to right, #eea849, #f46b45); 
+background: linear-gradient(to right, #eea849, #f46b45);
+"> 
                     <img src="{% static "images/heart_2.jpg" %}" alt="" class="card-img">
                     <div class="card-title">
                         {% if Results == 1 %}
-                            You have heart Disease
+                            <h1 class="fs-2 text-success fw-bolder">You have heart Disease</h1>
                         {% else %}
-                            No heart Disease
-                        {% endif %} 
-                         <p>Result: {{ Results }}</p>                      
+                            <h1 class="fs-1 text-success fw-bolder">You Don't have heart Disease</h1>
+                        {% endif %}                      
                     </div>
-                    <button class="card-btn btn btn-warning text-body-tertiary fs-3 fw-bolder">Start Prediction</button>
+                    <a href=" {% url 'user-input' %} "><button class="card-btn btn btn-warning text-body-tertiary fs-3 fw-bolder">Predict Again</button></a>
                 </div>
             </div>
         </div>
