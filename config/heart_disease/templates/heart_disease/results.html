@@ -7,11 +7,12 @@
                 <div class="card"> 
                     <img src="{% static "images/heart_2.jpg" %}" alt="" class="card-img">
                     <div class="card-title">
-                        {% for name, value in context %}
-                            <h1>{{name}}</h1>
-                            <h1>{{result}}</h1>
-                        {% endfor %}
-                        
+                        {% if Results == 1 %}
+                            You have heart Disease
+                        {% else %}
+                            No heart Disease
+                        {% endif %} 
+                         <p>Result: {{ Results }}</p>                      
                     </div>
                     <button class="card-btn btn btn-warning text-body-tertiary fs-3 fw-bolder">Start Prediction</button>
                 </div>

@@ -38,17 +38,19 @@ def user_inputs(request):
             feature_list = [age, sex, chest_pain_type, trestbps, cholestrol_level, fbs, restecg, thalac, exang, oldpeak, slope, ca, thal]
             float_values = [float(value) for value in feature_list]
             prediction = trained_model.predict([float_values])
-            print(type(prediction))
-            prediction_results =  HeartDiseasePrediction.objects.create(age=age, sex = sex, chest_pain_type = chest_pain_type, trestbps = trestbps, cholestrol_level = cholestrol_level, fbs = fbs, restecg = restecg, thalac = thalac, exang = exang, oldpeak = oldpeak, slope = slope, ca = ca, thal = thal, prediction_results = prediction[0])
-            results = HeartDiseasePrediction.objects.all()
-            return render(request, 'heart_disease/results.html', {"Prediction Results": results})
+            HeartDiseasePrediction.objects.create(age=age, sex = sex, chest_pain_type = chest_pain_type, trestbps = trestbps, cholestrol_level = cholestrol_level, fbs = fbs, restecg = restecg, thalac = thalac, exang = exang, oldpeak = oldpeak, slope = slope, ca = ca, thal = thal, prediction_results = prediction[0])
+
+            disease_status = {
+                "Results": prediction[0]
+            }
+            return render(request, 'heart_disease/results.html', disease_status)
         
     else:
         form = HeartDiseasePredictionForm()
     return render(request, 'heart_disease/input_data.html', {'form': form})
 
 def show_results(request):
-    prediction_results = user_inputs(request)
+    prediction_results = HeartDiseasePrediction.objects.last().prediction_results
     context = {
         "Results": prediction_results
     }
