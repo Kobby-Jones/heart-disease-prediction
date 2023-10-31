@@ -3,15 +3,69 @@
 
 
    {% block content %}
-     <h1 class='text-center'>Input The Data for Heart Disease Prediction</h1>
+     <h1 class='text-center text-info mt-4 fw-bolder'>Input The Data for Heart Disease Prediction</h1>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <form action="" method="post" class = "card p-3 space-between">
-         {% csrf_token %} 
-         {{ form|crispy }}
-         <button type ='submit' class='btn btn-primary'>Predict</button>
-    </form>
+        <div class="col-lg-12" >
+          <form style="background: #f46b45;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #eea849, #f46b45);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #eea849, #f46b45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+" action="" method="post" class = "card p-3 space-between">
+               {% csrf_token %} 
+               <div class="row">
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.age|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.sex|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.chest_pain_type|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.trestbps|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.cholestrol_level|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.fbs|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.restecg|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.thalac|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.exang|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-lg-3 text-success text-center fw-bolder">
+                  {{form.oldpeak|as_crispy_field}}
+                </div>
+                <div class="col-lg-3 text-success text-center fw-bolder">
+                  {{form.slope|as_crispy_field}}
+                </div>
+                <div class="col-lg-3 text-success text-center fw-bolder">
+                  {{form.ca|as_crispy_field}}
+                </div>
+                <div class="col-lg-3 text-success text-center fw-bolder">
+                  {{form.thal|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row text-center">
+                <div class="col-lg-4 px-auto ms-auto me-auto">
+                  <a href=" {% url 'results' %} "><button type ='submit' class='btn btn-success ms-auto py-2 px-5 fw-bolder fs-4'>Predict</button></a>
+                </div>
+               </div>
+              
+        </form>
         </div>
       </div>
         
