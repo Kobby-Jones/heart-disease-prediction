@@ -3,15 +3,18 @@
 
 {% block content %}
     
-    <div class="container mt-5 text-center">
+    <div class="container my-5 text-center">
         <div class="row ">
             <div class="col-lg-6 ms-auto me-auto ">
-                <div class="card"> 
+                <div class="card mb-4 pb-3"> 
                     <img src="{% static "images/heart.jpg" %}" alt="" class="card-img">
                     <div class="card-title">
                         <h1 class="text-center fw-bolder text-success">Welcome To Heart Disease Prediction Portal</h1>
                     </div>
-                    <button class="card-btn btn btn-warning text-body-tertiary fs-3 fw-bolder">Start Prediction</button>
+                    <a href=" {% url "user-input" %} ">
+                        <button class="card-btn btn btn-warning text-body-tertiary fs-3 fw-bolder">Start Prediction</button>
+                    </a>
+                    
                 </div>
             </div>
         </div>

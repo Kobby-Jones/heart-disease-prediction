@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import HeartDiseasePrediction
 from .forms import HeartDiseasePredictionForm
 import joblib
@@ -38,9 +38,18 @@ def user_inputs(request):
             feature_list = [age, sex, chest_pain_type, trestbps, cholestrol_level, fbs, restecg, thalac, exang, oldpeak, slope, ca, thal]
             float_values = [float(value) for value in feature_list]
             prediction = trained_model.predict([float_values])
-
-            HeartDiseasePrediction.objects.create(age=age, sex = sex, chest_pain_type = chest_pain_type, trestbps = trestbps, cholestrol_level = cholestrol_level, fbs = fbs, restecg = restecg, thalac = thalac, exang = exang, oldpeak = oldpeak, slope = slope, ca = ca, thal = thal, prediction_results = prediction[0])
+            print(type(prediction))
+            prediction_results =  HeartDiseasePrediction.objects.create(age=age, sex = sex, chest_pain_type = chest_pain_type, trestbps = trestbps, cholestrol_level = cholestrol_level, fbs = fbs, restecg = restecg, thalac = thalac, exang = exang, oldpeak = oldpeak, slope = slope, ca = ca, thal = thal, prediction_results = prediction[0])
+            results = HeartDiseasePrediction.objects.all()
+            return render(request, 'heart_disease/results.html', {"Prediction Results": results})
         
     else:
         form = HeartDiseasePredictionForm()
     return render(request, 'heart_disease/input_data.html', {'form': form})
+
+def show_results(request):
+    prediction_results = user_inputs(request)
+    context = {
+        "Results": prediction_results
+    }
+    return render(request, 'heart_disease/results.html', context)

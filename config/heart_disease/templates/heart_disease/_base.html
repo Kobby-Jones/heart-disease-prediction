@@ -22,10 +22,10 @@ background: linear-gradient(to right, #1565C0, #b92b27);
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto me-auto fs-3 text-light">
         <li class="nav-item">
-          <a class="nav-link active me-4 text-light fw-bold" aria-current="page" href="#">Home</a>
+          <a class="nav-link active me-4 text-light fw-bold" aria-current="page" href=" {% url "home" %} ">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-4 text-light fw-bold" href="#">Predict Heart Disease</a>
+          <a class="nav-link me-4 text-light fw-bold" href=" {% url "user-input" %}">Predict Heart Disease</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

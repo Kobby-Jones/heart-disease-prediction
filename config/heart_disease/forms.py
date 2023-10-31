@@ -6,29 +6,31 @@ from crispy_forms.helper import FormHelper
 class HeartDiseasePredictionForm(forms.ModelForm):
     class Meta:
         model = HeartDiseasePrediction
-        fields = '__all__'
+        exclude = ['prediction_results']
 
-    def __init__(self, *args, **kwargs):
-        super(HeartDiseasePredictionForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-3'
-        self.helper.field_class = 'col-4'
-        self.helper.layout = Layout(
-            Div(
-               Div(Field('Age'), css_class='row'),
-                Div(Field('Sex'), css_class='row'),
-                Div(Field('Chest pain type'), css_class='row'),
-                Div(Field('Trestbps'), css_class='row'),
-                Div(Field('Cholestrol level'), css_class='row'),
-                Div(Field('Fbs'), css_class='row'),
-                Div(Field('Restecg'), css_class='row'),
-                Div(Field('Thalac'), css_class='row'),
-                Div(Field('Exang'), css_class='row'),
-                Div(Field('Oldpeak'), css_class='row'),
-                Div(Field('Slope'), css_class='row'),
-                Div(Field('Ca'), css_class='row'),
-                Div(Field('Thal'), css_class='row'),
-            )
-            )
+    helper = FormHelper()
+    helper.layout = Layout(
+        Row(
+            Column('Age', css_class='form-group col-lg-4'),
+            Column('Sex', css_class='form-group col-lg-4'),
+            Column('Chest pain type', css_class='form-group col-lg-4'),
+        ),
+        Row(
+            Column('Trestbps', css_class='form-group col-lg-4'),
+            Column('Cholestrol level', css_class='form-group col-lg-4'),
+            Column('Fbs', css_class='form-group col-lg-4'),
+        ),
+        Row(
+            Column('Restecg', css_class='form-group col-lg-4'),
+            Column('Thalac', css_class='form-group col-lg-4'),
+            Column('Exang', css_class='form-group col-lg-4'),
+        ),
+        Row(
+            Column('Oldpeak', css_class='form-group col-lg-3'),
+            Column('Slope', css_class='form-group col-lg-3'),
+            Column('Ca', css_class='form-group col-lg-3'),
+            Column('Thal', css_class='form-group col-lg-3'),
+        ),
+
+    )
     
