@@ -1,0 +1,56 @@
+{% extends "heart_disease/_base.html" %}
+{% load crispy_forms_tags %}
+
+
+   {% block content %}
+     <h1 class='text-center text-info mt-4 fw-bolder'>Input The Data for Heart Diabetes Prediction</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" >
+          <form style="background: #f46b45;
+background: -webkit-linear-gradient(to right, #eea849, #f46b45); 
+background: linear-gradient(to right, #eea849, #f46b45);
+" action="" method="post" class = "card p-3 space-between">
+               {% csrf_token %} 
+               <div class="row">
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.pregnancies|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.glucose_Level|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.blood_Pressure|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.skin_Tickness|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.insulin|as_crispy_field}}
+                </div>
+                <div class="col-lg-4 text-success text-center fw-bolder">
+                  {{form.body_Mass_Index|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-lg-6 text-success text-center fw-bolder">
+                  {{form.diabetes_Pedidree_Function|as_crispy_field}}
+                </div>
+                <div class="col-lg-6 text-success text-center fw-bolder">
+                  {{form.age|as_crispy_field}}
+                </div>
+               </div>
+               <div class="row text-center">
+                <div class="col-lg-4 px-auto ms-auto me-auto">
+                  <a href=" {% url 'results' %} "><button type ='submit' class='btn btn-success ms-auto py-2 px-5 fw-bolder fs-4'>Predict</button></a>
+                </div>
+               </div>
+              
+        </form>
+        </div>
+      </div>
+        
+    </div>
+  {% endblock content %}

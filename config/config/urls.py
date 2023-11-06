@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from heart_disease.views import user_inputs, home, show_results
+from diabetes.views import diabetes_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('input/', user_inputs, name='user-input'),
     path('', home, name='home'),
     path('results/', show_results, name='results'),
+    path('diabetes-input/', diabetes_home, name='diabetes-input'),
 
 ]

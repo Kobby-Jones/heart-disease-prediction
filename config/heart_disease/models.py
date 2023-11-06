@@ -53,5 +53,11 @@ class HeartDiseasePrediction(models.Model):
     prediction_results = models.IntegerField(null=True)
 
     def __str__(self):
-        return f"User {self.id}"
+        heart_disease_status = None
+        if self.prediction_results == 1:
+            heart_disease_status = "Yes"
+        else:
+            heart_disease_status = "No"
+        return f"User {self.id} | Have Heart Disease?  {heart_disease_status}"
+
     

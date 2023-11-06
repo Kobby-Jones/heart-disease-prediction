@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'heart_disease',
     'crispy_forms',
     'crispy_bootstrap5',
+    'diabetes',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
