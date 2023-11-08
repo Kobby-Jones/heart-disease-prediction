@@ -11,7 +11,7 @@ trained_model = joblib.load(model_path)
 scaler = joblib.load(scaler_path)
 
 # Create your views here.
-def diabetes_home(request):
+def diabetes_input(request):
     if request.method == 'POST':
         form = DiabetesForm(request.POST)
         if form.is_valid():
@@ -33,7 +33,15 @@ def diabetes_home(request):
             diabetes_status = {
                 "Status": prediction[0]
             }
-            return render(request, 'heart_disease\index.html', diabetes_status)
+            return render(request, 'diabetes\outcome.html', diabetes_status)
     else:
         form = DiabetesForm()
     return render(request, 'diabetes\input-data.html', {"form": form})
+
+def diabetes_outcome(request):
+    outcome = DiabetesPrediction.objects.last().outcome
+
+    context = {
+        "Status": outcome
+    }
+    return render(request, 'diabetes/outcome.html', context)

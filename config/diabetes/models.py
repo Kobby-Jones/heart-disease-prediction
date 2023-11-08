@@ -16,8 +16,8 @@ class DiabetesPrediction(models.Model):
         diabetes_status = None
         if self.outcome == 1:
             diabetes_status = "Yes"
-        elif diabetes_status == None:
-            diabetes_status = "Unknown"
-        else:
+        elif self.outcome == 0:
             diabetes_status = "No"
-        return f"User {self.id} | Have Heart Disease?  {diabetes_status}"
+        else:
+            diabetes_status = "Unknown"
+        return f"User {self.id} | Have Diabetes?  {diabetes_status}"
