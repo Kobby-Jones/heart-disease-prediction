@@ -8,7 +8,7 @@ class DiabetesPrediction(models.Model):
     skin_Tickness = models.IntegerField()
     insulin = models.IntegerField()
     body_Mass_Index = models.FloatField()
-    diabetes_Pedidree_Function = models.FloatField()
+    diabetes_Pedigree_Function = models.FloatField()
     age = models.IntegerField()
     outcome = models.IntegerField(default=None)
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import HeartDiseasePrediction
 from .forms import HeartDiseasePredictionForm
 import joblib
@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LogisticRegression
-
+import sklearn
 
 # Create your views here.
 # Load the trained model 
@@ -17,6 +17,7 @@ trained_model = joblib.load(model_path)
 scaler = joblib.load(scaler_path)
 
 def home(request):
+    print(sklearn.__version__)
     return render(request, 'heart_disease/index.html')
 
 def user_inputs(request):
