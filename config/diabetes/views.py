@@ -22,7 +22,7 @@ def diabetes_input(request):
             insulin = form.cleaned_data['insulin']
             body_Mass_Index = form.cleaned_data['body_Mass_Index']
             diabetes_Pedigree_Function = form.cleaned_data['diabetes_Pedigree_Function']
-            age = form.cleaned_data['age']
+            age = form.cleaned_data['age'] 
 
             feature_list = [pregnancies, glucose_Level, blood_Pressure, skin_Tickness,insulin, body_Mass_Index, diabetes_Pedigree_Function, age]
             float_values = [[float(value) for value in feature_list]]
