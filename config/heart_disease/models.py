@@ -59,5 +59,3 @@ class HeartDiseasePrediction(models.Model):
         else:
             heart_disease_status = "No"
         return f"User {self.id} | Have Heart Disease?  {heart_disease_status}"
-
-    

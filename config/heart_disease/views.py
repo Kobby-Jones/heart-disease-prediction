@@ -1,12 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import HeartDiseasePrediction
-from .forms import HeartDiseasePredictionForm
+from .forms import HeartDiseasePredictionForm, SignUpForm, LoginForm
+from django.contrib.auth import authenticate, login
 import joblib
 import os
-import numpy as np
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.linear_model import LogisticRegression
 import sklearn
 
 # Create your views here.
@@ -60,3 +57,28 @@ def show_results(request):
         "Results": prediction_results
     }
     return render(request, 'heart_disease/results.html', context)
+
+def register(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'heart_disease/register.html', {'form': form})
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = LoginForm()
+    return render(request, 'heart_disease/login.html', {'form': form})
