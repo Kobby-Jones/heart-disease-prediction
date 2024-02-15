@@ -1,19 +1,33 @@
 {% extends "heart_disease/_base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+
+
+  
 
 {% block content %}
-<div class="container">
+<style>
+    body {
+        background: url('{% static "images/background.jpg" %}') !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .card{
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+<h1 class="text-center text-light fw-bolder">Register</h1>
+<div class="container mt-4">
     <div class="row">
-        <div class="col-lg-6 text-center ms-auto me-auto">
-            <form action="" method="post" class="card space-between p-3" style="background: #f46b45;
-background: -webkit-linear-gradient(to right, #eea849, #f46b45); 
-background: linear-gradient(to right, #eea849, #f46b45);
-"> 
+        <div class="col-lg-6 form-col text-center ms-auto me-auto ">
+            <form action="" method="post" class="card space-between p-5" > 
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-12">
                         {{form|crispy}}
                     </div>
+                    <button type="submit" class="btn btn-primary rounded-2">Sign Up</button>
                 </div>
                 
             </form>
