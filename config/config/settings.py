@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nte!)93qwnppcq=mq%&ov)5z#3+-^3%-hc64ab+)4*bm8t@2=w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://heart-disease-prediction-ma3a.onrender.com"]
 
 
 # Application definition
